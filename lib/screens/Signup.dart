@@ -64,10 +64,18 @@ class _State extends State<Signup> {
                     child: RaisedButton(
                       textColor: Colors.white,
                       color: Colors.blue,
-                      child: Text('Login'),
-                      onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
+                      child: Text('Sign Up'),
+                      onPressed: () async {
+                        if (nameController.text.isNotEmpty &&
+                            passwordController.text.isNotEmpty) {
+                          //show snackbar saying user successfully signed up
+                          final snackBar = SnackBar(
+                              content: Text('User successfully signed up'));
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                          await Future.delayed(
+                              const Duration(seconds: 2), () {});
+                          Navigator.pop(context);
+                        }
                       },
                     )),
                 Container(

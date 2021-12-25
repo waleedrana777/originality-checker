@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:originalitygram/models/product.dart';
 import 'package:originalitygram/router/constants.dart';
 import 'package:originalitygram/screens/Home.dart';
+import 'package:originalitygram/screens/NotFound.dart';
 import 'package:originalitygram/screens/ProductSuggestions.dart';
 import 'package:originalitygram/screens/Signin.dart';
 import 'package:originalitygram/screens/SearchProduct.dart';
@@ -38,6 +38,9 @@ class router {
 
       case changeFontSize:
         return MaterialPageRoute(builder: (_) => Home());
+
+        case notFoundRoute:
+        return MaterialPageRoute(builder: (_) => Notfound());
 
       default:
         return MaterialPageRoute(

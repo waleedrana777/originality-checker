@@ -62,13 +62,31 @@ class _State extends State<Signin> {
                     height: 50,
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                     margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-                    child: RaisedButton(
-                      textColor: Colors.white,
-                      color: Colors.blue,
+                    child: ElevatedButton(
                       child: Text('Login'),
                       onPressed: () {
-                        print(nameController.text);
-                        print(passwordController.text);
+                        //check if username and password are valid and then navigate to home page
+                        if (nameController.text == 'originality_admin' &&
+                            passwordController.text == 'admin123') {
+                          Navigator.pushReplacementNamed(context, '/home');
+                        } else {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('Error'),
+                                  content: Text('Invalid username or password'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      child: Text('Close'),
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                    )
+                                  ],
+                                );
+                              });
+                        }
                       },
                     )),
                 Container(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:originalitygram/screens/Home.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:originalitygram/screens/Signin.dart';
 import 'bloc/OriginalityBloc.dart';
 import 'package:originalitygram/router/Router.dart';
 
@@ -32,7 +33,7 @@ class _HomescreenState extends State<Homescreen> {
               onGenerateRoute: router.onGenerateRoute,
               theme:
                   BlocProvider.of<OriginalityBloc>(buildContext).state.appTheme,
-              home: Home(),
+              home: Signin(),
             ),
           );
         }));

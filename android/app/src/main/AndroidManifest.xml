@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.originalitygram">
    <application
-        android:name=".MyApp"
         android:label="originalitygram"
         android:icon="@mipmap/ic_launcher">
         <activity

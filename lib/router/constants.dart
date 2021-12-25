@@ -6,3 +6,4 @@ const String signinRoute = '/Signin';
 const String signupRoute = '/Signup';
 const String toggleTheme = '/ToggleTheme';
 const String changeFontSize = '/ChangeFontSize';
+const String notFoundRoute = '/NotFoundRoute';

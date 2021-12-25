@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:originalitygram/bloc/OriginalityBloc.dart';
 import 'package:originalitygram/router/constants.dart';
 import 'package:originalitygram/screens/ProductSuggestions.dart';
+import 'package:originalitygram/screens/Notfound.dart';
 
 class SearchProduct extends StatefulWidget {
   const SearchProduct({Key? key}) : super(key: key);
@@ -81,23 +82,32 @@ class _SearchProductState extends State<SearchProduct> {
 
   void callProductPage(String value) {
     var allProducts = BlocProvider.of<OriginalityBloc>(context).state.products;
+    int j = -1;
+    bool found = false;
 
     for (int i = 0, len = allProducts.length; i < len; i++) {
       print(
           '${allProducts[i].ProductLink} \nsearched against \n  ${searchController.text}');
 
       if (allProducts[i].ProductLink == searchController.text) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (Blocprovidercontext) => BlocProvider.value(
-                      value:
-                          BlocProvider.of<OriginalityBloc>(Blocprovidercontext),
-                      child: ProductSuggestions(dataa: allProducts[i]),
-                    )));
-        // Navigator.pushNamed(context, productSuggestionsRoute,
-        //     arguments: allProducts[i]);
+        j = i;
+        found = true;
+        break;
       }
+    }
+
+    if (found) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (blocprovidercontext) => BlocProvider.value(
+                    value:
+                        BlocProvider.of<OriginalityBloc>(blocprovidercontext),
+                    child: ProductSuggestions(dataa: allProducts[j]),
+                  )));
+    } else {
+      Navigator.pushNamed(context, notFoundRoute,
+          arguments: searchController.text);
     }
   }
 }
