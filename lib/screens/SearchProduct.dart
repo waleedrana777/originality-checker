@@ -47,7 +47,7 @@ class _SearchProductState extends State<SearchProduct> {
                     prefixIcon: Icon(Icons.search),
                   ),
                   onSubmitted: (value) {
-                    callProductPage(value);
+                    callProductPage(context, value);
                   },
                 ),
                 Row(
@@ -55,7 +55,7 @@ class _SearchProductState extends State<SearchProduct> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        callProductPage(searchController.text);
+                        callProductPage(context, searchController.text);
                       },
                       icon: Icon(
                         Icons.search,
@@ -80,20 +80,19 @@ class _SearchProductState extends State<SearchProduct> {
         ));
   }
 
-  void callProductPage(String value) {
+  void callProductPage(BuildContext context, String value) {
     var allProducts = BlocProvider.of<OriginalityBloc>(context).state.products;
     int j = -1;
     bool found = false;
 
     for (int i = 0, len = allProducts.length; i < len; i++) {
-      print(
-          '${allProducts[i].ProductLink} \nsearched against \n  ${searchController.text}');
+      print('${allProducts[i].ProductLink} \nsearched against \n  ${value}');
 
-      if (allProducts[i].ProductLink == searchController.text) {
-        j = i;
+      if (allProducts[i].ProductLink == value) {
         found = true;
-        break;
+        j = i;
       }
+      if (found) break;
     }
 
     if (found) {

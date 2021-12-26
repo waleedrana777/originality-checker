@@ -46,6 +46,10 @@ class _HomeState extends State<Home> {
                 Expanded(
                     flex: 1,
                     child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.orange, width: 2),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                         margin: const EdgeInsets.all(25.0),
                         width: 100,
                         height: 150,
@@ -77,6 +81,10 @@ class _HomeState extends State<Home> {
                 Expanded(
                     flex: 1,
                     child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.orange, width: 2),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                        ),
                         margin: const EdgeInsets.all(25.0),
                         width: 100,
                         height: 150,
@@ -511,6 +519,6 @@ class _HomeState extends State<Home> {
     print("here");
     await dbinstance.deleteAllProducts();
     // await dbinstance.dropDatabase();
-    dbinstance.close();
+    // dbinstance.close();
   }
 }

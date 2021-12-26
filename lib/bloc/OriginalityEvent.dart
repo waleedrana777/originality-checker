@@ -13,3 +13,12 @@ class ThemeChanged extends OriginalityEvent {
   @override
   List<Object?> get props => [];
 }
+
+class FontSizeChanged extends OriginalityEvent {
+  final double fontSize;
+
+  FontSizeChanged(this.fontSize);
+
+  @override
+  List<Object?> get props => [fontSize];
+}

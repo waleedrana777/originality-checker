@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:originalitygram/bloc/OriginalityBloc.dart';
+import 'package:originalitygram/screens/Home.dart';
 import 'Signup.dart';
 
 class Signin extends StatefulWidget {
@@ -68,7 +71,15 @@ class _State extends State<Signin> {
                         //check if username and password are valid and then navigate to home page
                         if (nameController.text == 'originality_admin' &&
                             passwordController.text == 'admin123') {
-                          Navigator.pushReplacementNamed(context, '/home');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BlocProvider.value(
+                                          value:
+                                              BlocProvider.of<OriginalityBloc>(
+                                                  context),
+                                          child: Home(),
+                                        )));
                         } else {
                           showDialog(
                               context: context,
@@ -102,8 +113,15 @@ class _State extends State<Signin> {
                         style: TextStyle(fontSize: 20),
                       ),
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Signup()));
+                        Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BlocProvider.value(
+                                          value:
+                                              BlocProvider.of<OriginalityBloc>(
+                                                  context),
+                                          child: Signup(),
+                                        )));
                       },
                     )
                   ],

@@ -21,6 +21,7 @@ class OriginalityBloc extends Bloc<OriginalityEvent, OriginalityState> {
             fontSize: 18,
             products: [])) {
     on<ThemeChanged>(_ChangeTheme);
+    on<FontSizeChanged>(_ChangeFontSize);
   }
 
   @override
@@ -39,5 +40,12 @@ class OriginalityBloc extends Bloc<OriginalityEvent, OriginalityState> {
         appTheme: OriginalTheme == ThemeData.dark()
             ? ThemeData.light()
             : ThemeData.dark()));
+  }
+
+  void _ChangeFontSize(FontSizeChanged event, Emitter<OriginalityState> emit) {
+    double fontSizeValue = event.fontSize;
+    emit(state.copyWith(
+        appTheme: state.appTheme.copyWith(
+            textTheme: TextTheme(button: TextStyle(fontSize: fontSizeValue)))));
   }
 }

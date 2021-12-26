@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:originalitygram/bloc/OriginalityBloc.dart';
 import 'package:originalitygram/router/constants.dart';
 import 'package:originalitygram/screens/ChangeFontScreen.dart';
+import 'package:originalitygram/screens/Signin.dart';
 import 'package:originalitygram/screens/Signup.dart';
 import 'package:originalitygram/screens/ThemeScreen.dart';
 
@@ -22,42 +23,64 @@ class _UserManagementState extends State<UserManagement> {
       ),
       body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, signupRoute);
-          },
-          child: Text('Sign Up'),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 200, minHeight: 100),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, signupRoute);
+            },
+            child: Text('Sign Up'),
+          ),
         ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamed(context, signinRoute);
-          },
-          child: Text('Sign In'),
+        Padding(padding: EdgeInsets.all(10)),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 200, minHeight: 100),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlocProvider.value(
+                            value: BlocProvider.of<OriginalityBloc>(context),
+                            child: Signin(),
+                          )));
+            },
+            child: Text('Sign In'),
+          ),
         ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => BlocProvider.value(
-                          value: BlocProvider.of<OriginalityBloc>(context),
-                          child: ThemeScreen(),
-                        )));
-          },
-          child: Text('Change App Theme'),
+        Padding(padding: EdgeInsets.all(10)),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 200, minHeight: 100),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlocProvider.value(
+                            value: BlocProvider.of<OriginalityBloc>(context),
+                            child: ThemeScreen(),
+                          )));
+            },
+            child: Text('Change App Theme'),
+          ),
         ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => BlocProvider.value(
-                          value: BlocProvider.of<OriginalityBloc>(context),
-                          child: ChangeFontScreen(),
-                        )));
-          },
-          child: Text('Change Font Size'),
+        Padding(padding: EdgeInsets.all(10)),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 200, minHeight: 100),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlocProvider.value(
+                            value: BlocProvider.of<OriginalityBloc>(context),
+                            child: ChangeFontScreen(),
+                          )));
+            },
+            child: Text('Change Font Size'),
+          ),
         ),
+        Padding(padding: EdgeInsets.all(10)),
       ])),
     );
   }

@@ -74,7 +74,6 @@ class _State extends State<Signup> {
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           await Future.delayed(
                               const Duration(seconds: 2), () {});
-                          Navigator.pop(context);
                         }
                       },
                     )),
