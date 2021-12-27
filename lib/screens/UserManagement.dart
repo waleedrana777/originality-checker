@@ -24,7 +24,7 @@ class _UserManagementState extends State<UserManagement> {
       body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 200, minHeight: 100),
+          constraints: BoxConstraints(minWidth: 300, minHeight: 100),
           child: ElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, signupRoute);
@@ -34,7 +34,7 @@ class _UserManagementState extends State<UserManagement> {
         ),
         Padding(padding: EdgeInsets.all(10)),
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 200, minHeight: 100),
+          constraints: BoxConstraints(minWidth: 300, minHeight: 100),
           child: ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -50,7 +50,7 @@ class _UserManagementState extends State<UserManagement> {
         ),
         Padding(padding: EdgeInsets.all(10)),
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 200, minHeight: 100),
+          constraints: BoxConstraints(minWidth: 300, minHeight: 100),
           child: ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -66,7 +66,7 @@ class _UserManagementState extends State<UserManagement> {
         ),
         Padding(padding: EdgeInsets.all(10)),
         ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 200, minHeight: 100),
+          constraints: BoxConstraints(minWidth: 300, minHeight: 100),
           child: ElevatedButton(
             onPressed: () {
               Navigator.push(

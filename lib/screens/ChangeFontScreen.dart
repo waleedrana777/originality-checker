@@ -23,7 +23,8 @@ class _ChangeFontScreenState extends State<ChangeFontScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-              Text('${this.sliderValue}'),
+              Text('${this.sliderValue}',
+                  style: TextStyle(fontSize: this.sliderValue)),
               //slider to change font size
               Slider(
                 value: sliderValue,

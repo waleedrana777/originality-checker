@@ -86,7 +86,7 @@ class _SearchProductState extends State<SearchProduct> {
     bool found = false;
 
     for (int i = 0, len = allProducts.length; i < len; i++) {
-      print('${allProducts[i].ProductLink} \nsearched against \n  ${value}');
+      // print('${allProducts[i].ProductLink} \nsearched against \n  ${value}');
 
       if (allProducts[i].ProductLink == value) {
         found = true;
@@ -102,7 +102,7 @@ class _SearchProductState extends State<SearchProduct> {
               builder: (blocprovidercontext) => BlocProvider.value(
                     value:
                         BlocProvider.of<OriginalityBloc>(blocprovidercontext),
-                    child: ProductSuggestions(dataa: allProducts[j]),
+                    child: ProductSuggestions(dataa: allProducts[j], index: j),
                   )));
     } else {
       Navigator.pushNamed(context, notFoundRoute,

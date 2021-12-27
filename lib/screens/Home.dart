@@ -53,10 +53,8 @@ class _HomeState extends State<Home> {
                         margin: const EdgeInsets.all(25.0),
                         width: 100,
                         height: 150,
-                        // color: Colors.black54,
                         child: TextButton(
                           style: TextButton.styleFrom(
-                            // primary: Colors.black87,
                             textStyle: TextStyle(fontSize: 17),
                           ),
                           onPressed: () {
@@ -507,7 +505,7 @@ class _HomeState extends State<Home> {
     await dbinstance.createAndInsert(p27);
 
     widget.products = await dbinstance.readAllProducts();
-    print('Products are now: ' + widget.products.toString());
+    // print('Products are now: ' + widget.products.toString());
   }
 
   readProducts() async {

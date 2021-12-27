@@ -7,7 +7,8 @@ import 'package:originalitygram/router/constants.dart';
 class ProductSuggestions extends StatefulWidget {
   Product dataa;
 
-  ProductSuggestions({Key? key, required this.dataa}) : super(key: key);
+  ProductSuggestions({Key? key, required this.dataa, required int index})
+      : super(key: key);
 
   @override
   _ProductSuggestionsState createState() => _ProductSuggestionsState();
@@ -84,7 +85,7 @@ class _ProductSuggestionsState extends State<ProductSuggestions> {
                                 fontWeight: FontWeight.bold,
                               )),
                           Text(
-                            '${widget.dataa.Weight}',
+                            '${widget.dataa.Weight} g',
                             style: TextStyle(
                               fontSize: 20,
                             ),
@@ -185,68 +186,115 @@ class _ProductSuggestionsState extends State<ProductSuggestions> {
                       ),
                       Padding(padding: const EdgeInsets.all(10)),
 
-                      Container(
-                        height: 240,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: suggestionList
-                              .map((product) => Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: NetworkImage(
-                                                  "${product.Img_Url}"),
-                                            ),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(8)),
-                                          ),
-                                          width: 150,
-                                          height: 150,
-                                          child: Align(
-                                              alignment: Alignment.topRight,
-                                              child: RaisedButton(
-                                                onPressed: () {
-                                                  suggestionList
-                                                      .remove(product);
-                                                  setState(() {});
+                      BlocBuilder(
+                          bloc: BlocProvider.of<OriginalityBloc>(context),
+                          builder: (context, state) {
+                            return Container(
+                              height: 240,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: suggestionList
+                                    .map((product) => Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              InkWell(
+                                                onTap: () {
+                                                  Navigator.pushNamed(context,
+                                                      productDetailsRoute,
+                                                      arguments: product);
                                                 },
-                                                color: Colors.amber,
-                                                shape: RoundedRectangleBorder(
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    image: DecorationImage(
+                                                      image: NetworkImage(
+                                                          "${product.Img_Url}"),
+                                                    ),
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                                child: Icon(Icons
-                                                    .do_not_disturb_on_outlined),
-                                              )),
-                                        ),
-                                        ConstrainedBox(
-                                          constraints: BoxConstraints(
-                                            maxWidth: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.4,
+                                                        BorderRadius.all(
+                                                            Radius.circular(8)),
+                                                  ),
+                                                  width: 150,
+                                                  height: 150,
+                                                  child: Align(
+                                                      alignment:
+                                                          Alignment.topRight,
+                                                      child: RaisedButton(
+                                                        onPressed: () {
+                                                          setState(() {
+                                                            suggestionList
+                                                                .removeWhere(
+                                                                    (element) =>
+                                                                        element
+                                                                            .PID ==
+                                                                        product
+                                                                            .PID);
+                                                            BlocProvider.of<
+                                                                        OriginalityBloc>(
+                                                                    context)
+                                                                .state
+                                                                .products
+                                                                .removeWhere(
+                                                                    (element) =>
+                                                                        element
+                                                                            .PID ==
+                                                                        product
+                                                                            .PID);
+
+                                                            print('removed');
+                                                            print(suggestionList
+                                                                .map((e) =>
+                                                                    e.PID ==
+                                                                    product.PID));
+                                                          });
+                                                        },
+                                                        color: Colors.amber,
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10)),
+                                                        child: Icon(Icons
+                                                            .do_not_disturb_on_outlined),
+                                                      )),
+                                                ),
+                                              ),
+                                              ConstrainedBox(
+                                                constraints: BoxConstraints(
+                                                  maxWidth:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                          0.4,
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    '${product.Name}',
+                                                    maxLines: 2,
+                                                    style: TextStyle(
+                                                        fontSize: 25,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
                                           ),
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Text(
-                                              '${product.Name}',
-                                              maxLines: 2,
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ))
-                              .toList(),
-                        ),
-                      ),
+                                        ))
+                                    .toList(),
+                              ),
+                            );
+                          }),
                       //Button to go to home Screen
+                      Padding(padding: const EdgeInsets.all(10)),
+                      RaisedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, feedbackRoute);
+                        },
+                        child: Text('Give Feedback'),
+                      ),
                       Padding(padding: const EdgeInsets.all(10)),
                       ElevatedButton(
                         child: Text('Go to Home Screen'),

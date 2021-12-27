@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:originalitygram/screens/Home.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:originalitygram/screens/Signin.dart';
 import 'bloc/OriginalityBloc.dart';

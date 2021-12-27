@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:originalitygram/models/product.dart';
 import 'package:originalitygram/router/constants.dart';
+import 'package:originalitygram/screens/Feedback.dart' as feedback;
 import 'package:originalitygram/screens/Home.dart';
 import 'package:originalitygram/screens/NotFound.dart';
 import 'package:originalitygram/screens/ProductSuggestions.dart';
@@ -9,6 +10,7 @@ import 'package:originalitygram/screens/SearchProduct.dart';
 import 'package:originalitygram/screens/Signup.dart';
 import 'package:originalitygram/screens/ThemeScreen.dart';
 import 'package:originalitygram/screens/UserManagement.dart';
+import 'package:originalitygram/screens/ViewSuggestions.dart';
 
 class router {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -19,10 +21,13 @@ class router {
       case searchProduct:
         return MaterialPageRoute(builder: (_) => SearchProduct());
 
-      case productSuggestionsRoute:
+      case productDetailsRoute:
         Product data = settings.arguments as Product;
         return MaterialPageRoute(
-            builder: (_) => ProductSuggestions(dataa: data));
+            builder: (_) => ViewSuggestions(suggestionProduct: data));
+
+      case feedbackRoute:
+        return MaterialPageRoute(builder: (_) => feedback.Feedback());
 
       case userManagement:
         return MaterialPageRoute(builder: (_) => UserManagement());
@@ -39,7 +44,7 @@ class router {
       case changeFontSize:
         return MaterialPageRoute(builder: (_) => Home());
 
-        case notFoundRoute:
+      case notFoundRoute:
         return MaterialPageRoute(builder: (_) => Notfound());
 
       default:
