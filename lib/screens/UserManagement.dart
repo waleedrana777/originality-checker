@@ -20,6 +20,15 @@ class _UserManagementState extends State<UserManagement> {
     return Scaffold(
       appBar: AppBar(
         title: Text('User Management'),
+        actions: [
+          //Button with moon icon to change theme
+          IconButton(
+            icon: Icon(Icons.brightness_3),
+            onPressed: () {
+              BlocProvider.of<OriginalityBloc>(context).add(ThemeChanged());
+            },
+          ),
+        ],
       ),
       body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -29,7 +38,8 @@ class _UserManagementState extends State<UserManagement> {
             onPressed: () {
               Navigator.pushNamed(context, signupRoute);
             },
-            child: Text('Sign Up'),
+            child: Text('Sign Up',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
         ),
         Padding(padding: EdgeInsets.all(10)),
@@ -45,7 +55,8 @@ class _UserManagementState extends State<UserManagement> {
                             child: Signin(),
                           )));
             },
-            child: Text('Sign In'),
+            child: Text('Sign In',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
         ),
         Padding(padding: EdgeInsets.all(10)),
@@ -61,7 +72,8 @@ class _UserManagementState extends State<UserManagement> {
                             child: ThemeScreen(),
                           )));
             },
-            child: Text('Change App Theme'),
+            child: Text('Change App Theme',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
         ),
         Padding(padding: EdgeInsets.all(10)),
@@ -77,7 +89,8 @@ class _UserManagementState extends State<UserManagement> {
                             child: ChangeFontScreen(),
                           )));
             },
-            child: Text('Change Font Size'),
+            child: Text('Change Font Size',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
         ),
         Padding(padding: EdgeInsets.all(10)),

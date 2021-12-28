@@ -16,6 +16,22 @@
         "terminal.ansiBrightBlue": "#57c7ff",
         "terminal.ansiBrightMagenta": "#ff6ac1",
         "terminal.ansiBrightCyan": "#9aedfe",
-        "terminal.ansiBrightWhite": "#eff0eb"
-    }
+        "terminal.ansiBrightWhite": "#eff0eb",
+        "activityBar.activeBackground": "#9adb68",
+        "activityBar.activeBorder": "#4b86d4",
+        "activityBar.background": "#9adb68",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#4b86d4",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "sash.hoverBorder": "#9adb68",
+        "statusBarItem.hoverBackground": "#65b22b",
+        "statusBarItem.remoteBackground": "#7ed13f",
+        "statusBarItem.remoteForeground": "#15202b",
+        "titleBar.activeBackground": "#7ed13f",
+        "titleBar.activeForeground": "#15202b",
+        "titleBar.inactiveBackground": "#7ed13f99",
+        "titleBar.inactiveForeground": "#15202b99"
+    },
+    "peacock.color": "#7ed13f"
 }

@@ -5,6 +5,7 @@ import 'bloc/OriginalityBloc.dart';
 import 'package:originalitygram/router/Router.dart';
 
 void main() {
+  Paint.enableDithering = true;
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(

@@ -19,19 +19,40 @@ class _SearchProductState extends State<SearchProduct> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: TextField(
-          autofocus: true,
-          controller: searchController,
-          decoration: InputDecoration(
-            hintText: 'Search',
-            border: InputBorder.none,
+          title: TextField(
+            autofocus: true,
+            controller: searchController,
+            decoration: InputDecoration(
+              hintText: 'Search',
+              border: InputBorder.none,
+            ),
           ),
-        )),
+          actions: [
+            //Button with moon icon to change theme
+            IconButton(
+              icon: Icon(Icons.brightness_3),
+              onPressed: () {
+                BlocProvider.of<OriginalityBloc>(context).add(ThemeChanged());
+              },
+            ),
+          ],
+        ),
         body: Container(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      'Originalitygram',
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 30),
+                    )),
+                SizedBox(height: 150),
                 Text('Automated Product Suggestions',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center),

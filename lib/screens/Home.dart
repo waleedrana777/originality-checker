@@ -37,6 +37,15 @@ class _HomeState extends State<Home> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Originalitygram"),
+          actions: [
+          //Button with moon icon to change theme
+          IconButton(
+            icon: Icon(Icons.brightness_3),
+            onPressed: () {
+              BlocProvider.of<OriginalityBloc>(context).add(ThemeChanged());
+            },
+          ),
+        ],
         ),
         body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -47,49 +56,53 @@ class _HomeState extends State<Home> {
                     flex: 1,
                     child: Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.orange, width: 2),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(color: Colors.orange, width: 2.5),
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
                         ),
                         margin: const EdgeInsets.all(25.0),
                         width: 100,
-                        height: 150,
+                        height: 172,
                         child: TextButton(
-                          style: TextButton.styleFrom(
-                            textStyle: TextStyle(fontSize: 17),
-                          ),
-                          onPressed: () {
-                            BlocProvider.of<OriginalityBloc>(context)
-                                .state
-                                .products = widget.products;
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BlocProvider.value(
-                                          value:
-                                              BlocProvider.of<OriginalityBloc>(
-                                                  context),
-                                          child: SearchProduct(),
-                                        )));
-                          },
-                          child: Text(
-                            'Automated \nProduct \nSuggestions',
-                            textAlign: TextAlign.center,
-                          ),
-                        ))),
+                            style: TextButton.styleFrom(
+                              textStyle: TextStyle(fontSize: 17),
+                            ),
+                            onPressed: () {
+                              BlocProvider.of<OriginalityBloc>(context)
+                                  .state
+                                  .products = widget.products;
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BlocProvider.value(
+                                            value: BlocProvider.of<
+                                                OriginalityBloc>(context),
+                                            child: SearchProduct(),
+                                          )));
+                            },
+                            child: Column(children: [
+                              //Icon for product search
+                              Icon(Icons.screen_search_desktop_rounded,
+                                  size: 70),
+                              SizedBox(height: 10),
+                              Text(
+                                'Automated \nProduct \nSuggestions',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ])))),
                 Expanded(
                     flex: 1,
                     child: Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.orange, width: 2),
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          border: Border.all(color: Colors.orange, width: 2.5),
+                          borderRadius: BorderRadius.all(Radius.circular(8)),
                         ),
                         margin: const EdgeInsets.all(25.0),
                         width: 100,
-                        height: 150,
-                        // color: Colors.black54,
+                        height: 172,
                         child: TextButton(
                           style: TextButton.styleFrom(
-                            // primary: Colors.black87,
                             textStyle: TextStyle(fontSize: 17),
                           ),
                           onPressed: () {
@@ -106,9 +119,18 @@ class _HomeState extends State<Home> {
                                           child: UserManagement(),
                                         )));
                           },
-                          child: Text(
-                            'User \nManagement',
-                            textAlign: TextAlign.center,
+                          child: Column(
+                            children: [
+                              //icon for user management
+                              Icon(Icons.person_pin_circle_sharp, size: 70),
+                              SizedBox(height: 15),
+                              Text(
+                                'User \nManagement',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           ),
                         ))),
               ])

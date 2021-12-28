@@ -10,7 +10,7 @@ class ChangeFontScreen extends StatefulWidget {
 }
 
 class _ChangeFontScreenState extends State<ChangeFontScreen> {
-  double sliderValue = 10;
+  double sliderValue = 15;
 
   @override
   Widget build(BuildContext context) {

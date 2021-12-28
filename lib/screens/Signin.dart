@@ -26,13 +26,20 @@ class _State extends State<Signin> {
                 Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
-                    child: Text(
-                      'Originalitygram',
-                      style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 30),
-                    )),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset("assets/images/fake-news.png",
+                              width: 70, height: 100),
+                          SizedBox(width: 10),
+                          Text(
+                            'Originalitygram',
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 30),
+                          )
+                        ])),
                 Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
@@ -71,15 +78,14 @@ class _State extends State<Signin> {
                         //check if username and password are valid and then navigate to home page
                         if (nameController.text == 'originality_admin' &&
                             passwordController.text == 'admin123') {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BlocProvider.value(
-                                          value:
-                                              BlocProvider.of<OriginalityBloc>(
-                                                  context),
-                                          child: Home(),
-                                        )));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BlocProvider.value(
+                                        value: BlocProvider.of<OriginalityBloc>(
+                                            context),
+                                        child: Home(),
+                                      )));
                         } else {
                           showDialog(
                               context: context,
@@ -114,14 +120,13 @@ class _State extends State<Signin> {
                       ),
                       onPressed: () {
                         Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => BlocProvider.value(
-                                          value:
-                                              BlocProvider.of<OriginalityBloc>(
-                                                  context),
-                                          child: Signup(),
-                                        )));
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BlocProvider.value(
+                                      value: BlocProvider.of<OriginalityBloc>(
+                                          context),
+                                      child: Signup(),
+                                    )));
                       },
                     )
                   ],
