@@ -33,19 +33,30 @@ class _UserManagementState extends State<UserManagement> {
       body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
         ConstrainedBox(
-          constraints: BoxConstraints(minWidth: 300, minHeight: 100),
+          constraints: BoxConstraints(
+              maxWidth: 300, maxHeight: 100, minWidth: 300, minHeight: 100),
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8))),
             onPressed: () {
               Navigator.pushNamed(context, signupRoute);
             },
-            child: Text('Sign Up',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Row(children: [
+              Icon(Icons.person_add, size: 50),
+              SizedBox(width: 20),
+              Text('Sign Up', style: TextStyle(fontWeight: FontWeight.bold))
+            ]),
           ),
         ),
         Padding(padding: EdgeInsets.all(10)),
         ConstrainedBox(
-          constraints: BoxConstraints(minWidth: 300, minHeight: 100),
+          constraints: BoxConstraints(
+              maxWidth: 300, maxHeight: 100, minWidth: 300, minHeight: 100),
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8))),
             onPressed: () {
               Navigator.push(
                   context,
@@ -55,14 +66,21 @@ class _UserManagementState extends State<UserManagement> {
                             child: Signin(),
                           )));
             },
-            child: Text('Sign In',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Row(children: [
+              Icon(Icons.lock_open, size: 50),
+              SizedBox(width: 20),
+              Text('Sign In', style: TextStyle(fontWeight: FontWeight.bold))
+            ]),
           ),
         ),
         Padding(padding: EdgeInsets.all(10)),
         ConstrainedBox(
-          constraints: BoxConstraints(minWidth: 300, minHeight: 100),
+          constraints: BoxConstraints(
+              maxWidth: 300, maxHeight: 100, minWidth: 300, minHeight: 100),
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8))),
             onPressed: () {
               Navigator.push(
                   context,
@@ -72,14 +90,22 @@ class _UserManagementState extends State<UserManagement> {
                             child: ThemeScreen(),
                           )));
             },
-            child: Text('Change App Theme',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Row(children: [
+              Icon(Icons.palette, size: 50),
+              SizedBox(width: 20),
+              Text('Change App Theme',
+                  style: TextStyle(fontWeight: FontWeight.bold))
+            ]),
           ),
         ),
         Padding(padding: EdgeInsets.all(10)),
         ConstrainedBox(
-          constraints: BoxConstraints(minWidth: 300, minHeight: 100),
+          constraints: BoxConstraints(
+              maxWidth: 300, maxHeight: 100, minWidth: 300, minHeight: 100),
           child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8))),
             onPressed: () {
               Navigator.push(
                   context,
@@ -89,8 +115,12 @@ class _UserManagementState extends State<UserManagement> {
                             child: ChangeFontScreen(),
                           )));
             },
-            child: Text('Change Font Size',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Row(children: [
+              Icon(Icons.font_download, size: 50),
+              SizedBox(width: 20),
+              Text('Change Font Size',
+                  style: TextStyle(fontWeight: FontWeight.bold))
+            ]),
           ),
         ),
         Padding(padding: EdgeInsets.all(10)),

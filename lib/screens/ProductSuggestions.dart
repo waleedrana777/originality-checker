@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:originalitygram/bloc/OriginalityBloc.dart';
 import 'package:originalitygram/models/product.dart';
 import 'package:originalitygram/router/constants.dart';
+import 'package:originalitygram/screens/SearchProduct.dart';
 
 class ProductSuggestions extends StatefulWidget {
   Product dataa;
@@ -19,9 +20,6 @@ class ProductSuggestions extends StatefulWidget {
 class _ProductSuggestionsState extends State<ProductSuggestions> {
   @override
   dispose() {
-    BlocProvider.of<OriginalityBloc>(context).add(
-      SuggestionsCleared(),
-    );
     super.dispose();
   }
 
@@ -50,6 +48,19 @@ class _ProductSuggestionsState extends State<ProductSuggestions> {
             icon: Icon(Icons.brightness_3),
             onPressed: () {
               BlocProvider.of<OriginalityBloc>(context).add(ThemeChanged());
+            },
+          ),
+          //Search button to search product
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => BlocProvider.value(
+                            value: BlocProvider.of<OriginalityBloc>(context),
+                            child: SearchProduct(),
+                          )));
             },
           ),
         ],

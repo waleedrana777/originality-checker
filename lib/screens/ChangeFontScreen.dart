@@ -10,7 +10,7 @@ class ChangeFontScreen extends StatefulWidget {
 }
 
 class _ChangeFontScreenState extends State<ChangeFontScreen> {
-  double sliderValue = 15;
+  double sliderValue = 18;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +23,14 @@ class _ChangeFontScreenState extends State<ChangeFontScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-              Text('${this.sliderValue}',
-                  style: TextStyle(fontSize: this.sliderValue)),
+              Text('${double.parse('$sliderValue').toInt().toString()}',
+                  style: TextStyle(
+                      color: Colors.black, fontSize: this.sliderValue)),
               //slider to change font size
               Slider(
                 value: sliderValue,
-                min: 1.0,
-                max: 30.0,
+                min: 10.0,
+                max: 18.0,
                 divisions: 8,
                 label: 'font size',
                 onChanged: (value) {

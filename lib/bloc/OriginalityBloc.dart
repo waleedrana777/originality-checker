@@ -16,10 +16,10 @@ class OriginalityBloc extends Bloc<OriginalityEvent, OriginalityState> {
           isLightModeOn: true,
 
           //APP THEME
-          appTheme: FlexThemeData.light(scheme: FlexScheme.mandyRed),
+          appTheme: FlexThemeData.light(scheme: FlexScheme.blue),
 
           //FONT SIZE
-          fontSize: 18,
+          fontSize: 25,
           products: [],
           suggestions: [],
           notRendered: [],
@@ -45,10 +45,9 @@ class OriginalityBloc extends Bloc<OriginalityEvent, OriginalityState> {
     emit(state.copyWith(
         isLightModeOn: !isLightModeOnValue,
         fontSize: 28,
-        appTheme:
-            OriginalTheme == FlexThemeData.dark(scheme: FlexScheme.mandyRed)
-                ? FlexThemeData.light(scheme: FlexScheme.mandyRed)
-                : FlexThemeData.dark(scheme: FlexScheme.mandyRed)));
+        appTheme: OriginalTheme == FlexThemeData.dark(scheme: FlexScheme.blue)
+            ? FlexThemeData.light(scheme: FlexScheme.blue)
+            : FlexThemeData.dark(scheme: FlexScheme.blue)));
   }
 
   void _ChangeFontSize(FontSizeChanged event, Emitter<OriginalityState> emit) {

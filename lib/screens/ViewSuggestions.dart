@@ -20,14 +20,20 @@ class _ViewSuggestionsState extends State<ViewSuggestions> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Product Details'),
-        ),
+        appBar: AppBar(title: Text('Product Details'), actions: [
+          //Button with moon icon to change theme
+          IconButton(
+            icon: Icon(Icons.brightness_3),
+            onPressed: () {
+              BlocProvider.of<OriginalityBloc>(context).add(ThemeChanged());
+            },
+          ),
+        ]),
         body: BlocBuilder<OriginalityBloc, OriginalityState>(
             builder: (context, state) {
           return SingleChildScrollView(
               child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

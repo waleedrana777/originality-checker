@@ -52,7 +52,6 @@ class _SearchProductState extends State<SearchProduct> {
                           fontWeight: FontWeight.w500,
                           fontSize: 30),
                     )),
-                SizedBox(height: 150),
                 Text('Automated Product Suggestions',
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center),
